@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include oman_vat *.css
+recursive-include oman_vat *.csv
+recursive-include oman_vat *.html
+recursive-include oman_vat *.ico
+recursive-include oman_vat *.js
+recursive-include oman_vat *.json
+recursive-include oman_vat *.md
+recursive-include oman_vat *.png
+recursive-include oman_vat *.py
+recursive-include oman_vat *.svg
+recursive-include oman_vat *.txt
+recursive-exclude oman_vat *.pyc
