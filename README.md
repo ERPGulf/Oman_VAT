@@ -14,8 +14,11 @@ Please visit our website www.ERPGulf.com  and our hosting provider www.Claudion.
 How to install
 --------------
 bench get-app oman_vat https://github.com/ERPGulf/Oman_VAT.git
+
 bench --site site1.local install-app oman_vat
+
 bench --site site1.local migrate
+
 
 If you face any issue with installation, send email to support@ERPGulf.com 
 
