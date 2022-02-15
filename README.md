@@ -1,4 +1,4 @@
-## OMAN E-Invoicing
+## OMAN VAT management and reporting - ERPNext module.
 
 This is minor tweak of E-invoing done on ( https://github.com/ahmadpak/ksa_vat ) for Oman. Full credit goes to Havenir Solutions who has done most of the coding. 
 
