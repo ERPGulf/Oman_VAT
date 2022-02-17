@@ -22,7 +22,7 @@ bench --site site1.local migrate
 
 If you face any issue with installation, send email to support@ERPGulf.com 
 
-Functional documentation ( We will soon release a video documentation on Oman VAT
+Functional documentation ( We have published a video documentation on Oman VAT on our youtube channel , please watch https://youtu.be/G3vo3oUaD2s ) 
 -------------------------
 Generate a report for the VAT on Sales and VAT on Purchases
 ![image](https://user-images.githubusercontent.com/69480716/153743642-9a3d61d0-cd4a-4951-8262-51f4210579bf.png)
