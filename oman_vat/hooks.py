@@ -183,6 +183,7 @@ fixtures = [
                 'Sales Invoice-qr_code',
                 'Company-company_name_in_arabic',
                 'Address-address_in_arabic',
+                'Customer-arabic_name'
             ]]
         }
     }
