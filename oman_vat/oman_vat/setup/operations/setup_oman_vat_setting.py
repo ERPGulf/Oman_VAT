@@ -4,7 +4,9 @@ import json
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
 # adding to git
-
+def setup(company=None, patch=True):
+	
+	make_custom_fields()
 def create_oman_vat_setting(self, method):
     """
     On creation of first company. Creates OMAN VAT Setting"""
