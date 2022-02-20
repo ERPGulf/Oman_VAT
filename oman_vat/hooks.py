@@ -2,11 +2,11 @@ from . import __version__ as app_version
 
 app_name = "oman_vat"
 app_title = "OMAN VAT"
-app_publisher = "Havenir Solutions"
+app_publisher = "ERPGulf"
 app_description = "OMAN VAT Management and Reporting"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
-app_email = "support@havenir.com"
+app_email = "support@erpgulf.com"
 app_license = "MIT"
 
 # Includes in <head>
