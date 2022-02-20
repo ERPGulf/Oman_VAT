@@ -65,6 +65,12 @@ def make_custom_fields():
         fieldtype='Read Only', 
         insert_after='customer_name',
         fetch_from='customer.customer_name_in_arabic', print_hide=1)
+    suppliers_name_in_arabic=dict(
+        fieldname='suppliers_name_in_arabic', 
+        label='Supplier Name in Arabic',
+		fieldtype='Read Only', insert_after='supplier_name',
+		fetch_from='supplier.supplier_name_in_arabic', print_hide=1)
     
     create_custom_field('Sales Invoice', qr_code_field)
     create_custom_field('Sales Invoice',customers_name_in_arabic)
+    create_custom_field('Purchase Invoice',suppliers_name_in_arabic)
