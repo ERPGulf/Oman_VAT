@@ -1,7 +1,7 @@
 import frappe
 import os
 import json
-from frappe.custom.doctype.custom_field.custom_field import create_custom_field
+from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
 # adding to git
 
@@ -53,24 +53,75 @@ def create_oman_vat_setting(self, method):
 
         oman_vat_setting.save()
 
+
 def make_custom_fields():
-    qr_code_field = dict(
-        fieldname='qr_code', 
-        label='QR Code', 
-        fieldtype='Attach Image', 
-        read_only=1, no_copy=1, hidden=1)
-    customers_name_in_arabic = dict(
-        fieldname='customers_name_in_arabic', 
-        label='Customer Name in Arabic', 
-        fieldtype='Read Only', 
-        insert_after='customer_name',
-        fetch_from='customer.customer_name_in_arabic', print_hide=1)
-    suppliers_name_in_arabic=dict(
-        fieldname='suppliers_name_in_arabic', 
-        label='Supplier Name in Arabic',
-		fieldtype='Read Only', insert_after='supplier_name',
-		fetch_from='supplier.supplier_name_in_arabic', print_hide=1)
-    
-    create_custom_field('Sales Invoice', qr_code_field)
-    create_custom_field('Sales Invoice',customers_name_in_arabic)
-    create_custom_field('Purchase Invoice',suppliers_name_in_arabic)
+	"""Create Custom fields
+	- QR code Image file
+	- Company Name in Arabic
+	- Address in Arabic
+	"""
+	is_zero_rated = dict(fieldname='is_zero_rated', label='Is Zero Rated',
+		fieldtype='Check', fetch_from='item_code.is_zero_rated', insert_after='description',
+		print_hide=1)
+
+	is_exempt = dict(fieldname='is_exempt', label='Is Exempt',
+		fieldtype='Check', fetch_from='item_code.is_exempt', insert_after='is_zero_rated',
+		print_hide=1)
+
+	purchase_invoice_fields = [
+			dict(fieldname='company_trn', label='Company TRN',
+				fieldtype='Read Only', insert_after='shipping_address',
+				fetch_from='company.tax_id', print_hide=1),
+			dict(fieldname='supplier_name_in_arabic', label='Supplier Name in Arabic',
+				fieldtype='Read Only', insert_after='supplier_name',
+				fetch_from='supplier.supplier_name_in_arabic', print_hide=1)
+		]
+
+	sales_invoice_fields = [
+			dict(fieldname='company_trn', label='Company TRN',
+				fieldtype='Read Only', insert_after='company_address',
+				fetch_from='company.tax_id', print_hide=1),
+			dict(fieldname='customer_name_in_arabic', label='Customer Name in Arabic',
+				fieldtype='Read Only', insert_after='customer_name',
+				fetch_from='customer.customer_name_in_arabic', print_hide=1),
+			dict(fieldname='ksa_einv_qr', label='KSA E-Invoicing QR',
+				fieldtype='Attach Image', read_only=1, no_copy=1, hidden=1)
+		]
+
+	custom_fields = {
+		'Item': [is_zero_rated, is_exempt],
+		'Customer': [
+			dict(fieldname='customer_name_in_arabic', label='Customer Name in Arabic',
+				fieldtype='Data', insert_after='customer_name'),
+		],
+		'Supplier': [
+			dict(fieldname='supplier_name_in_arabic', label='Supplier Name in Arabic',
+				fieldtype='Data', insert_after='supplier_name'),
+		],
+		'Purchase Invoice': purchase_invoice_fields,
+		'Purchase Order': purchase_invoice_fields,
+		'Purchase Receipt': purchase_invoice_fields,
+		'Sales Invoice': sales_invoice_fields,
+		'POS Invoice': sales_invoice_fields,
+		'Sales Order': sales_invoice_fields,
+		'Delivery Note': sales_invoice_fields,
+		'Sales Invoice Item': [is_zero_rated, is_exempt],
+		'POS Invoice Item': [is_zero_rated, is_exempt],
+		'Purchase Invoice Item': [is_zero_rated, is_exempt],
+		'Sales Order Item': [is_zero_rated, is_exempt],
+		'Delivery Note Item': [is_zero_rated, is_exempt],
+		'Quotation Item': [is_zero_rated, is_exempt],
+		'Purchase Order Item': [is_zero_rated, is_exempt],
+		'Purchase Receipt Item': [is_zero_rated, is_exempt],
+		'Supplier Quotation Item': [is_zero_rated, is_exempt],
+		'Address': [
+			dict(fieldname='address_in_arabic', label='Address in Arabic',
+				fieldtype='Data',insert_after='address_line2')
+		],
+		'Company': [
+			dict(fieldname='company_name_in_arabic', label='Company Name In Arabic',
+				fieldtype='Data', insert_after='company_name')
+		]
+	}
+
+	create_custom_fields(custom_fields, ignore_validate=True, update=True)
