@@ -5,7 +5,7 @@ from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 from frappe.permissions import add_permission, update_permission_property
 # adding to git
 def setup(company=None, patch=True):
-	
+	add_permissions()
 	make_custom_fields()
 def add_permissions():
 	"""Add Permissions for OMAN VAT Setting."""
