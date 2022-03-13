@@ -2,11 +2,21 @@ import frappe
 import os
 import json
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
-
+from frappe.permissions import add_permission, update_permission_property
 # adding to git
 def setup(company=None, patch=True):
 	
 	make_custom_fields()
+def add_permissions():
+	"""Add Permissions for OMAN VAT Setting."""
+	add_permission('OMAN VAT Setting', 'All', 0)
+	for role in ('Accounts Manager', 'Accounts User', 'System Manager'):
+		add_permission('OMAN VAT Setting', role, 0)
+		update_permission_property('OMAN VAT Setting', role, 0, 'write', 1)
+		update_permission_property('OMAN VAT Setting', role, 0, 'create', 1)
+
+	"""Enable OMAN VAT Report"""
+	frappe.db.set_value('Report', 'OMAN VAT', 'disabled', 0)
 def create_oman_vat_setting(self, method):
     """
     On creation of first company. Creates OMAN VAT Setting"""
