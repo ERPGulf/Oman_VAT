@@ -21,7 +21,7 @@ def add_permissions():
 def create_oman_vat_setting(self, method):
     """
     On creation of first company. Creates OMAN VAT Setting"""
-    # Validating if this is the first company for Saudi Arab
+    # Validating if this is the first company for Oman
     company_list = frappe.get_all('Company', {
         'country': 'Oman'
     }) 
