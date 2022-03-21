@@ -97,7 +97,7 @@ def make_custom_fields():
 			dict(fieldname='customer_name_in_arabic', label='Customer Name in Arabic',
 				fieldtype='Read Only', insert_after='customer_name',
 				fetch_from='customer.customer_name_in_arabic', print_hide=1),
-			dict(fieldname='ksa_einv_qr', label='KSA E-Invoicing QR',
+			dict(fieldname='oman_einv_qr', label='OMAN E-Invoicing QR',
 				fieldtype='Attach Image', read_only=1, no_copy=1, hidden=1)
 		]
 
