@@ -67,14 +67,14 @@ def create_oman_vat_setting(self, method):
         oman_vat_setting.save()
 
 
-def make_custom_fields():
+def make_custom_fields(self, method):
 	"""Create Custom fields
 	- QR code Image file
 	- Company Name in Arabic
 	- Address in Arabic
 	"""
 	is_zero_rated = dict(fieldname='is_zero_rated', label='Is Zero Rated',
-		fieldtype='Check', fetch_from='item_code.is_zero_rated', insert_after='description',
+		fieldtype='Check', fetch_from='item_code.is_zero_rated', insert_after='tax_code',
 		print_hide=1)
 
 	is_exempt = dict(fieldname='is_exempt', label='Is Exempt',

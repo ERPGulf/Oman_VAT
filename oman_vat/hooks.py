@@ -91,7 +91,8 @@ app_license = "MIT"
 
 doc_events = {
     "Company": {
-        "on_update": "oman_vat.oman_vat.setup.operations.setup_oman_vat_setting.create_oman_vat_setting"
+        "on_update": "oman_vat.oman_vat.setup.operations.setup_oman_vat_setting.create_oman_vat_setting",
+        "on_update": "oman_vat.oman_vat.setup.operations.setup_oman_vat_setting.make_custom_fields"
     },
     "Sales Invoice": {
         "after_insert": "oman_vat.events.accounts.sales_invoice.create_qr_code",
