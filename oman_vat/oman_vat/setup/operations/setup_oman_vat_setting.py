@@ -48,7 +48,7 @@ def create_oman_vat_setting(self, method):
                 for row in data['accounts']:
                     item_tax_template = row['item_tax_template']
                     account = row['account']
-                    oman_vat_setting.append('OMAN_vat_sales_accounts', {
+                    oman_vat_setting.append('oman_vat_sales_accounts', {
                         'title': row['title'],
                         'item_tax_template': f'{item_tax_template} - {self.abbr}',
                         'account': f'{account} - {self.abbr}'
@@ -58,7 +58,7 @@ def create_oman_vat_setting(self, method):
                 for row in data['accounts']:
                     item_tax_template = row['item_tax_template']
                     account = row['account']
-                    oman_vat_setting.append('OMAN_vat_purchase_accounts', {
+                    oman_vat_setting.append('oman_vat_purchase_accounts', {
                         'title': row['title'],
                         'item_tax_template': f'{item_tax_template} - {self.abbr}',
                         'account': f'{account} - {self.abbr}'

@@ -60,7 +60,7 @@ def get_data(filters):
 	grand_total_taxable_adjustment_amount = 0
 	grand_total_tax = 0
 
-	for vat_setting in oman_vat_setting.OMAN_vat_sales_accounts:
+	for vat_setting in oman_vat_setting.oman_vat_sales_accounts:
 		total_taxable_amount, total_taxable_adjustment_amount, \
 			total_tax = get_tax_data_for_each_vat_setting(vat_setting, filters, 'Sales Invoice')
 		
@@ -86,7 +86,7 @@ def get_data(filters):
 	grand_total_taxable_adjustment_amount = 0
 	grand_total_tax = 0
 
-	for vat_setting in oman_vat_setting.OMAN_vat_purchase_accounts:
+	for vat_setting in oman_vat_setting.oman_vat_purchase_accounts:
 		total_taxable_amount, total_taxable_adjustment_amount, \
 			total_tax = get_tax_data_for_each_vat_setting(vat_setting, filters, 'Purchase Invoice')
 		
